@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tugas6/LuasJajarGenjang.dart';
-import 'package:flutter_tugas6/LuasLingkaran.dart';
-import 'package:flutter_tugas6/LuasPersegi.dart';
-import 'package:flutter_tugas6/LuasPersegiPanjang.dart';
-import 'package:flutter_tugas6/LuasSegitiga.dart';
+import 'package:get/get.dart';
+
 
 class HomePage extends StatelessWidget {
   @override
@@ -29,13 +26,13 @@ class HomePage extends StatelessWidget {
                 BangunRuangCard(
                   title: 'Segitiga',
                   icon: Icons.change_history,
-                  destinationPage: LuasSegitiga(),
+                  destinationPage: () => '/luasSegitiga',
                 ),
                 SizedBox(width: 40),
                 BangunRuangCard(
                   title: 'Persegi',
                   icon: Icons.square,
-                  destinationPage: LuasPersegi(),
+                  destinationPage: () => '/luasPersegi',
                 ),
               ],
             ),
@@ -46,13 +43,13 @@ class HomePage extends StatelessWidget {
                 BangunRuangCard(
                   title: 'Persegi Panjang',
                   icon: Icons.rectangle,
-                  destinationPage: LuasPersegiPanjang(),
+                  destinationPage: () => '/luasPersegiPanjang',
                 ),
                 SizedBox(width: 40),
                 BangunRuangCard(
                   title: 'Jajar Genjang',
                   icon: Icons.crop_din,
-                  destinationPage: luasJajarGenjang(),
+                  destinationPage: () => '/luasJajarGenjang',
                 ),
               ],
             ),
@@ -60,7 +57,7 @@ class HomePage extends StatelessWidget {
             BangunRuangCard(
               title: 'Lingkaran',
               icon: Icons.lens,
-              destinationPage: LuasLingkaran(),
+              destinationPage: () => '/luasLingkaran',
             ),
           ],
         ),
@@ -71,15 +68,13 @@ class HomePage extends StatelessWidget {
 
 class BangunRuangCard extends StatelessWidget {
   final String title;
-  final Widget destinationPage;
+  final Function() destinationPage;
   final IconData icon;
-
 
   BangunRuangCard({
     required this.title,
     required this.destinationPage,
     required this.icon,
-  
   });
 
   @override
@@ -88,11 +83,8 @@ class BangunRuangCard extends StatelessWidget {
       elevation: 5,
       child: ElevatedButton(
         onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => destinationPage),
-        );
-      },
+          Get.toNamed(destinationPage());
+        },
         child: Container(
           width: 100,
           height: 100,
@@ -106,7 +98,7 @@ class BangunRuangCard extends StatelessWidget {
                 title,
                 style: TextStyle(
                   fontSize: 16,
-                  color: Colors.black, 
+                  color: Colors.black,
                 ),
                 textAlign: TextAlign.center,
               ),

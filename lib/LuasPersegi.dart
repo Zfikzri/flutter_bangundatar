@@ -34,6 +34,13 @@ class _LuasPersegiState extends State<LuasPersegi> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Luas Persegi"),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            // Kembali ke halaman sebelumnya saat tombol "Back" ditekan
+            Get.back();
+          },
+        ),
       ),
       body: Center(
         child: Container(

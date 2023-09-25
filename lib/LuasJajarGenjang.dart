@@ -33,6 +33,13 @@ class _luasJajarGenjangState extends State<luasJajarGenjang> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Luas Jajar Genjang"),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            // Kembali ke halaman sebelumnya saat tombol "Back" ditekan
+            Get.back();
+          },
+        ),
       ),
       body: Center(
         child: Container(

@@ -35,6 +35,13 @@ class _LuasPersegiPanjangState extends State<LuasPersegiPanjang> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Luas Persegi Panjang"),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            // Kembali ke halaman sebelumnya saat tombol "Back" ditekan
+            Get.back();
+          },
+        ),
       ),
       body: Center(
         child: Container(

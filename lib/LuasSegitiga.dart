@@ -15,7 +15,6 @@ class _LuasSegitigaState extends State<LuasSegitiga> {
   TextEditingController ctrTinggi = TextEditingController();
   final LuasController controller = Get.put(LuasController());
 
-
   Widget myTextField(TextEditingController ctr, String myLabel){
     return Container(
       margin: EdgeInsets.all(10),
@@ -33,7 +32,15 @@ class _LuasSegitigaState extends State<LuasSegitiga> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("luas Segitiga"),
+        title: Text("Luas Segitiga"),
+        // Tambahkan tombol "Back" di sini
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            // Kembali ke halaman sebelumnya saat tombol "Back" ditekan
+            Get.back();
+          },
+        ),
       ),
       body: Center(
         child: Container(
@@ -41,16 +48,21 @@ class _LuasSegitigaState extends State<LuasSegitiga> {
           child: Column(
             children: [
               // alas
-              myTextField(ctrAlas, "alas"),
-              myTextField(ctrTinggi , "tinggi"),
-              ElevatedButton(onPressed: () => controller.luasSegitiga(
-                  double.parse(ctrAlas.text.toString()),
-                  double.parse(ctrTinggi.text.toString())),
-                  child: Text("calculate")),
-              // tempel hasil hitung nya
+              myTextField(ctrAlas, "Alas"),
+              myTextField(ctrTinggi, "Tinggi"),
+              ElevatedButton(
+                onPressed: () {
+                  controller.luasSegitiga(
+                    double.parse(ctrAlas.text.toString()),
+                    double.parse(ctrTinggi.text.toString()),
+                  );
+                },
+                child: Text("Calculate"),
+              ),
+              // Tampilkan hasil perhitungan
               Obx(
-                    () => Text(
-                  '${controller.hasilLuasSegitiga.value}',
+                () => Text(
+                  'Hasil: ${controller.hasilLuasSegitiga.value}',
                 ),
               ),
             ],
